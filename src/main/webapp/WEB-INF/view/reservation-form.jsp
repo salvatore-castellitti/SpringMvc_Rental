@@ -11,19 +11,19 @@
 <c:choose>
     <c:when test="${controller.equals('DateChosen')}">
         <form:form method="POST" modelAttribute="reservModel" action="addDbReserv">
-            <form:input type="hidden" path="startDate" id="startDate" value = "${reservModel.startDate}"/>
+            <form:hidden path="id"/>
+            <form:hidden path="startDate"/>
+            <form:hidden path="endDate"/>
 
-
-            <form:input path="id" id="id" type="text"/>
-            ${reservModel}
-            ${reservModel.startDate}
             Vehicle:
-            <!--form select entra direttamente in model
             <div class="row justify-content-center">
-                <select name="vehicleId" class="form-control">
-
-                </select>
-            </div>-->
+                <form:label path="vehicle.id">Vehicle</form:label>
+                <form:select path="vehicle.id">
+                    <c:forEach var="vehicle" items="${VEHICLE_LIST}">
+                        <form:option value="${vehicle.id}">${vehicle.houseProducer}</form:option>
+                    </c:forEach>
+                </form:select>
+            </div>
             <div class="row justify-content-center">
                 <input type="submit" >
             </div>

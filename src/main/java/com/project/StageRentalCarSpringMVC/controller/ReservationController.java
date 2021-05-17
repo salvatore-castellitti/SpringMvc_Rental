@@ -96,11 +96,14 @@ public class ReservationController {
     }
 
     @RequestMapping (value = "/addDbReserv", method = RequestMethod.POST)
-    public String addDbReserv(@ModelAttribute("Reservation")@Valid Reservation reservModel, BindingResult bindingResult) throws ParseException {
+    public String addDbReserv(@ModelAttribute("Reservation") Reservation reservation
+            , BindingResult bindingResult
+    ) throws ParseException {
 
-            System.out.println("AAAAAAAAAAAAAAAAAAAAAAA");
+        System.out.println("AAAAAAAAAAAAAAAAAAAAAAA");
         for( FieldError fieldError : bindingResult.getFieldErrors() )
             System.out.println(fieldError.getField() +" : "+fieldError.getDefaultMessage());
+        System.out.println(reservation.getVehicle());
 //        User user = userService.getByUsername(principal.getName());
 //        Vehicle vehicle = vehicleService.getById(vehicleId);
 //        boolean bool = Boolean.parseBoolean(isConfirmed);

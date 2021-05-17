@@ -2,6 +2,7 @@ package com.project.StageRentalCarSpringMVC.model;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -16,9 +17,11 @@ public class Reservation implements Serializable {
     @Column(name = "id")
     private int id;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "startDate")
     private Date startDate;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "endDate")
     private Date endDate;
 
