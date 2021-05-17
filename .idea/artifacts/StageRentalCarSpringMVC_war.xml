@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="StageRentalCarSpringMVC:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>StageRentalCarSpringMVC</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="StageRentalCarSpringMVC-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="StageRentalCarSpringMVC:war exploded" />
+    </root>
+  </artifact>
+</component>
