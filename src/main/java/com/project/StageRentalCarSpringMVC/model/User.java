@@ -37,7 +37,7 @@ public class User implements Serializable {
     private String role;
     //true= admin, false=customer
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
     private Set<Reservation> reservation;
 
 

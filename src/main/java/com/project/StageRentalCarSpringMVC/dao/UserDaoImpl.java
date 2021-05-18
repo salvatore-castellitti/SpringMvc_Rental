@@ -43,4 +43,11 @@ public class UserDaoImpl extends AbstractDao<User,String> implements UserDao{
         user = (User) entityManager.createQuery(JPQL).setParameter("username", username).getSingleResult();
         return user;
     }
+
+    @Override
+    public void deleteById(int id){
+        String JPQL = "DELETE FROM User u WHERE u.id = :id ";
+        entityManager.createQuery(JPQL).setParameter("id", id).executeUpdate();
+
+    }
 }

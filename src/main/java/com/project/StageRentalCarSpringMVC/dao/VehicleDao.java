@@ -19,4 +19,6 @@ public interface VehicleDao {
 
     void delete(Vehicle vehicle);
 
+    void deleteById(int id);
+
 }

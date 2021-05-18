@@ -2,11 +2,7 @@ package com.project.StageRentalCarSpringMVC.controller;
 
 import com.project.StageRentalCarSpringMVC.model.User;
 import com.project.StageRentalCarSpringMVC.service.UserService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

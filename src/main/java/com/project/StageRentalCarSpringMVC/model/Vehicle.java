@@ -1,5 +1,8 @@
 package com.project.StageRentalCarSpringMVC.model;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
@@ -28,7 +31,7 @@ public class Vehicle implements Serializable {
     @Column(name = "licensePlate")
     private String licensePlate;
 
-    @OneToMany(mappedBy = "vehicle", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "vehicle", cascade = CascadeType.REMOVE)
     private Set<Reservation> reservation;
 
     public Vehicle() {

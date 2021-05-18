@@ -44,4 +44,11 @@ public class VehicleDaoImpl extends AbstractDao<Vehicle,String> implements Vehic
     public Vehicle getById(String s) {
         return super.getById(s);
     }
+
+    @Override
+    public void deleteById(int id){
+        String JPQL = "DELETE FROM Vehicle v WHERE v.id = :id ";
+        entityManager.createQuery(JPQL).setParameter("id", id).executeUpdate();
+
+    }
 }

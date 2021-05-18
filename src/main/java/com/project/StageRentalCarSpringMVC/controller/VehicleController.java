@@ -30,31 +30,39 @@ public class VehicleController {
         return "vehicle-list";
     }
 
-    @GetMapping("/save")
-    public String vehicleForm(Model model){
+    @GetMapping(value = {"/save","/update"})
+    public String vehicleForm(Model model,
+                              @ModelAttribute("idVehicle") String idVehicle){
         Vehicle vehicle = new Vehicle();
+        if(!idVehicle.equals("")){
+            vehicle = vehicleService.getById(idVehicle);
+        }
         model.addAttribute("vehicleAction",vehicle);
         return "vehicle-form";
     }
 
-    @PostMapping("/save")
+    @PostMapping(value = {"/save","/update"})
     public String saveUser(@ModelAttribute("vehicleAction") Vehicle vehicle){
-        vehicleService.save(vehicle);
+        if (vehicle.getId()!=0){
+            vehicleService.update(vehicle);
+        }else{
+            vehicleService.save(vehicle);
+        }
         return "redirect:/vehicle";
     }
 
-    @GetMapping("/update")
-    public String updateForm(@ModelAttribute("idVehicle") String idVehicle, Model model){
-        Vehicle vehicle = vehicleService.getById(idVehicle);
-        model.addAttribute("vehicleAction",vehicle);
-        return "vehicle-form";
-    }
+//    @GetMapping("/update")
+//    public String updateForm(@ModelAttribute("idVehicle") String idVehicle, Model model){
+//        Vehicle vehicle = vehicleService.getById(idVehicle);
+//        model.addAttribute("vehicleAction",vehicle);
+//        return "vehicle-form";
+//    }
 
-    @PostMapping("/update")
-    public String updateVehicle(@ModelAttribute("vehicleAction") Vehicle vehicle){
-        vehicleService.update(vehicle);
-        return "redirect:/vehicle";
-    }
+//    @PostMapping("/update")
+//    public String updateVehicle(@ModelAttribute("vehicleAction") Vehicle vehicle){
+//        vehicleService.update(vehicle);
+//        return "redirect:/vehicle";
+//    }
 
     @GetMapping("/delete")
     public String deleteVehicle(@ModelAttribute("idVehicle")String idVehicle){

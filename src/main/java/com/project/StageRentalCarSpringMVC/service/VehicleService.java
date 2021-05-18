@@ -19,4 +19,7 @@ public interface VehicleService{
     void delete(Vehicle vehicle);
 
     Vehicle getById(String id);
+
+    void deleteById(int id);
+
 }

@@ -46,4 +46,9 @@ public class VehicleServiceImpl implements VehicleService{
     public Vehicle getById(String id) {
         return vehicleRepository.getById(id);
     }
+
+    @Override
+    public void deleteById(int id) {
+        vehicleRepository.deleteById(id);
+    }
 }
