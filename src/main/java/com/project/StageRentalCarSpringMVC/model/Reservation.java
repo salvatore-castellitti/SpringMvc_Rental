@@ -28,12 +28,12 @@ public class Reservation implements Serializable {
     @Column(name = "confirmed")
     private boolean confirmed;
 
-    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
     @JoinColumn(name = "user", referencedColumnName = "id")
     @OnDelete(action=OnDeleteAction.NO_ACTION)
     private User user;
 
-    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
     @JoinColumn(name = "vehicle", referencedColumnName = "id")
     @OnDelete(action= OnDeleteAction.NO_ACTION)
     private Vehicle vehicle;

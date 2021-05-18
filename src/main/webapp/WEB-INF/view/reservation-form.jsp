@@ -17,12 +17,11 @@
 
             Vehicle:
             <div class="row justify-content-center">
-                <form:label path="vehicle.id">Vehicle</form:label>
-                <form:select path="vehicle.id">
-                    <c:forEach var="vehicle" items="${VEHICLE_LIST}">
-                        <form:option value="${vehicle.id}">${vehicle.houseProducer}</form:option>
+                <select name="idVehic" class="form-control">
+                    <c:forEach var="vehic" items="${VEHICLE_LIST}">
+                        <option value="${vehic.id}">${vehic.houseProducer} ${vehic.model}</option>
                     </c:forEach>
-                </form:select>
+                </select>
             </div>
             <div class="row justify-content-center">
                 <input type="submit" >

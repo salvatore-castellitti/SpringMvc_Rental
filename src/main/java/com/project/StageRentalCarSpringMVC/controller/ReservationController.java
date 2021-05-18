@@ -78,7 +78,6 @@ public class ReservationController {
                 model.addAttribute("error","Invalid date, choose a valid date ");
             }
         }
-        System.out.println(reservation.getStartDate());
         model.addAttribute("reservModel",reservation);
         return "reservation-form";
     }
@@ -96,32 +95,15 @@ public class ReservationController {
     }
 
     @RequestMapping (value = "/addDbReserv", method = RequestMethod.POST)
-    public String addDbReserv(@ModelAttribute("Reservation") Reservation reservation
-            , BindingResult bindingResult
-    ) throws ParseException {
+    public String addDbReserv(@ModelAttribute("Reservation") Reservation reservation,
+                              @ModelAttribute("idVehic") String idVehic,
+                              Principal principal) throws ParseException {
 
-        System.out.println("AAAAAAAAAAAAAAAAAAAAAAA");
-        for( FieldError fieldError : bindingResult.getFieldErrors() )
-            System.out.println(fieldError.getField() +" : "+fieldError.getDefaultMessage());
-        System.out.println(reservation.getVehicle());
-//        User user = userService.getByUsername(principal.getName());
-//        Vehicle vehicle = vehicleService.getById(vehicleId);
-//        boolean bool = Boolean.parseBoolean(isConfirmed);
-//        Date startDate = new SimpleDateFormat("yyyy-MM-dd").parse(sDate);
-//        Date endDate = new SimpleDateFormat("yyyy-MM-dd").parse(eDate);
-//
-//        System.out.println(eDate);
-
-//        reservation.setConfirmed(bool);
-//        reservation.setUser(user);
-//        reservation.setVehicle(vehicle);
-
-//        reservationService.save(reservation);
-
-
-//        System.out.println(reservation.getStartDate());
-//        System.out.println(reservation.getEndDate());
-//        System.out.println(reservation.getVehicle());
+        User user = userService.getByUsername(principal.getName());
+        reservation.setUser(user);
+        Vehicle vehicle = vehicleService.getById(idVehic);
+        reservation.setVehicle(vehicle);
+        reservationService.save(reservation);
 
         return "redirect:/reservation";
     }
