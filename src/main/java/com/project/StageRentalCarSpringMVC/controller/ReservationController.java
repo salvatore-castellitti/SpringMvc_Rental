@@ -55,10 +55,11 @@ public class ReservationController {
         return "reservation-list";
     }
 
-    @GetMapping(value = "/add")
+    @GetMapping(value = {"/add","/update"})
     public String addReservation(@ModelAttribute("startDate")String sDate,
                                  @ModelAttribute("endDate")String eDate,
                                  @ModelAttribute("controller")String controller,
+                                 @ModelAttribute("idReserv") String idReserv,
                                  Model model) throws ParseException {
         Reservation reservation = new Reservation();
         if(controller.equalsIgnoreCase("DateChosen")){
@@ -77,6 +78,10 @@ public class ReservationController {
                 model.addAttribute("controller","DateError");
                 model.addAttribute("error","Invalid date, choose a valid date ");
             }
+        }
+        System.out.println(idReserv);
+        if (!idReserv.equals("")){
+            reservation.setId(Integer.parseInt(idReserv));
         }
         model.addAttribute("reservModel",reservation);
         return "reservation-form";
@@ -103,7 +108,12 @@ public class ReservationController {
         reservation.setUser(user);
         Vehicle vehicle = vehicleService.getById(idVehic);
         reservation.setVehicle(vehicle);
-        reservationService.save(reservation);
+
+        if (reservation.getId()!=0){
+            reservationService.update(reservation);
+        }else{
+            reservationService.save(reservation);
+        }
 
         return "redirect:/reservation";
     }
