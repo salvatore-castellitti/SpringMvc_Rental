@@ -9,12 +9,14 @@ import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.web.cors.CorsUtils;
 
 import javax.sql.DataSource;
 
@@ -73,6 +75,7 @@ public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
+                .antMatchers("/static/**").permitAll()
                 .antMatchers("/").hasAnyRole("ADMIN","CUSTOMER")
                 .antMatchers("/reservation/").hasAnyRole("CUSTOMER","ADMIN")
                 .antMatchers("/reservation/**").hasAnyRole("CUSTOMER","ADMIN")
@@ -92,4 +95,5 @@ public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .exceptionHandling().accessDeniedPage("/access-denied");
     }
+
 }

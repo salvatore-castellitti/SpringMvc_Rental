@@ -1,6 +1,5 @@
 package com.project.StageRentalCarSpringMVC.controller;
 
-import com.mysql.cj.jdbc.SuspendableXAConnection;
 import com.project.StageRentalCarSpringMVC.model.Reservation;
 import com.project.StageRentalCarSpringMVC.model.User;
 import com.project.StageRentalCarSpringMVC.model.Vehicle;
@@ -10,20 +9,14 @@ import com.project.StageRentalCarSpringMVC.service.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.security.Principal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.stream.StreamSupport;
 
 @Controller
 @RequestMapping("/reservation")

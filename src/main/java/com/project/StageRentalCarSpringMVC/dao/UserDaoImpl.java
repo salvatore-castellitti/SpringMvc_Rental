@@ -1,6 +1,7 @@
 package com.project.StageRentalCarSpringMVC.dao;
 
 import com.project.StageRentalCarSpringMVC.model.User;
+import com.project.StageRentalCarSpringMVC.model.Vehicle;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.criteria.*;
@@ -13,6 +14,17 @@ public class UserDaoImpl extends AbstractDao<User,String> implements UserDao{
     public List<User> getAll() {
         return super.getAll();
     }
+
+    @Override
+    public List<User> getAllCustomer() {
+        List<User> userCustomer;
+
+        String JPQL = "from User where role = 'CUSTOMER'";
+
+        userCustomer = entityManager.createQuery(JPQL).getResultList();
+        return userCustomer;
+    }
+
 
     @Override
     public void save(User entity) {

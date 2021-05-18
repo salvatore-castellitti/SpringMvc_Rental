@@ -35,10 +35,20 @@
 		<put-attribute name="content" value="/WEB-INF/view/reservation-list.jsp" />
 	</definition>
 
+	<definition name="reservation-form" extends="baseLayout">
+		<put-attribute name="titolo"  value="List Reservation" />
+		<put-attribute name="content" value="/WEB-INF/view/reservation-form.jsp" />
+	</definition>
+
 	<!-- Vehicle -->
 	<definition name="vehicle-list" extends="baseLayout">
 		<put-attribute name="titolo"  value="Car Park" />
 		<put-attribute name="content" value="/WEB-INF/view/vehicle-list.jsp" />
+	</definition>
+
+	<definition name="vehicle-form" extends="baseLayout">
+		<put-attribute name="titolo"  value="Car Park" />
+		<put-attribute name="content" value="/WEB-INF/view/vehicle-form.jsp" />
 	</definition>
 
 

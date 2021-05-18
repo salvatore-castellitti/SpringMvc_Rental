@@ -27,7 +27,7 @@ public class UserController {
     @RequestMapping
     public String listUser(Model model){
 
-        List<User> allUser = userService.getAll();
+        List<User> allUser = userService.getAllCustomer();
 
         model.addAttribute("listUser",allUser);
         return "user-list";
@@ -58,22 +58,6 @@ public class UserController {
 
             return "redirect:/";
     }
-
-//    @GetMapping(value = "/update")
-//    public String updateForm(@ModelAttribute("idUser") String idUser, Model model){
-//        User user = userService.getById(idUser);
-//        model.addAttribute("userAction",user);
-//        return "user-form";
-//    }
-
-//    @PostMapping({"/update","/profile"})
-//    public String updateUser(@ModelAttribute("userAction") User user){
-//        user.setPassword(passwordEncoder.encode(user.getPassword()));
-//        user.setRole("CUSTOMER");
-//        userService.update(user);
-//
-//        return "redirect:/user";
-//    }
 
     @GetMapping("/delete")
     public String deleteUSer (@ModelAttribute("idUser") String idUser){

@@ -51,19 +51,6 @@ public class VehicleController {
         return "redirect:/vehicle";
     }
 
-//    @GetMapping("/update")
-//    public String updateForm(@ModelAttribute("idVehicle") String idVehicle, Model model){
-//        Vehicle vehicle = vehicleService.getById(idVehicle);
-//        model.addAttribute("vehicleAction",vehicle);
-//        return "vehicle-form";
-//    }
-
-//    @PostMapping("/update")
-//    public String updateVehicle(@ModelAttribute("vehicleAction") Vehicle vehicle){
-//        vehicleService.update(vehicle);
-//        return "redirect:/vehicle";
-//    }
-
     @GetMapping("/delete")
     public String deleteVehicle(@ModelAttribute("idVehicle")String idVehicle){
         Vehicle vehicle = vehicleService.getById(idVehicle);
