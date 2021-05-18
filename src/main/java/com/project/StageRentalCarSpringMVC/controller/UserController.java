@@ -41,14 +41,21 @@ public class UserController {
         if(!idUser.equals("")){
            user = userService.getById(idUser);
         }
+
         model.addAttribute("userAction",user);
         return "user-form";
     }
 
     @PostMapping(value = {"/save","/update","/profile"})
     public String saveUser(@ModelAttribute("userAction") User user,
-                           Principal principal){
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+                           Principal principal,
+                           @ModelAttribute("pass")String pass){
+        System.out.println(pass);
+        System.out.println(user.getPassword());
+
+        if (!pass.equals("")){
+            user.setPassword(passwordEncoder.encode(pass));
+        }
         user.setRole("CUSTOMER");
         if (user.getId()!=0){
             userService.update(user);

@@ -15,13 +15,17 @@
                 </c:when>
             </c:choose>
 
+            <form:hidden path="password"/>
+
             Name: <form:input id="name" path="name" type="text" placeholder="Name" class="form-control"/> <br>
 
             Surname: <form:input id="surname" path="surname" type="text" placeholder="Surname" class="form-control"/> <br>
 
             Username: <form:input id="username" path="username" type="text" placeholder="Username" class="form-control"/> <br>
 
-            Password: <form:input id="password" path="password" type="text" placeholder="New Pass" class="form-control"/> <br>
+            Tax Code: <form:input id="taxCode" path="taxCode" type="text" placeholder="Tax Code" class="form-control"/> <br>
+
+            Password: <input type="text" name="pass" placeholder="Password" class="form-control" id="pass">
 
             <input type="submit">
 
