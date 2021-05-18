@@ -37,38 +37,47 @@ public class UserController {
         return "user-list";
     }
 
-    @GetMapping("/save")
-    public String userForm(Model model){
+    @GetMapping(value = {"/save","/update"})
+    public String userForm(Model model,
+                           @ModelAttribute("idUser") String idUser){
 
         User user = new User();
+        if(!idUser.equals("")){
+           user = userService.getById(idUser);
+        }
         model.addAttribute("userAction",user);
         return "user-form";
     }
 
-    @PostMapping(value = "/save")
-    public String saveUser(@ModelAttribute("userAction") User user){
+    @PostMapping(value = {"/save","/update","/profile"})
+    public String saveUser(@ModelAttribute("userAction") User user,
+                           Principal principal){
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRole("CUSTOMER");
-        userService.save(user);
+        if (user.getId()!=0){
+            userService.update(user);
+        }else{
+            userService.save(user);
+        }
 
-        return "redirect:/user";
+            return "redirect:/";
     }
 
-    @GetMapping(value = "/update")
-    public String updateForm(@ModelAttribute("idUser") String idUser, Model model){
-        User user = userService.getById(idUser);
-        model.addAttribute("userAction",user);
-        return "user-form";
-    }
+//    @GetMapping(value = "/update")
+//    public String updateForm(@ModelAttribute("idUser") String idUser, Model model){
+//        User user = userService.getById(idUser);
+//        model.addAttribute("userAction",user);
+//        return "user-form";
+//    }
 
-    @PostMapping({"/update","/profile"})
-    public String updateUser(@ModelAttribute("userAction") User user){
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setRole("CUSTOMER");
-        userService.update(user);
-
-        return "redirect:/user";
-    }
+//    @PostMapping({"/update","/profile"})
+//    public String updateUser(@ModelAttribute("userAction") User user){
+//        user.setPassword(passwordEncoder.encode(user.getPassword()));
+//        user.setRole("CUSTOMER");
+//        userService.update(user);
+//
+//        return "redirect:/user";
+//    }
 
     @GetMapping("/delete")
     public String deleteUSer (@ModelAttribute("idUser") String idUser){
