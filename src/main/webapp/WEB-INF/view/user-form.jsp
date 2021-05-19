@@ -25,7 +25,7 @@
 
             Tax Code: <form:input id="taxCode" path="taxCode" type="text" placeholder="Tax Code" class="form-control"/> <br>
 
-            Password: <input type="text" name="pass" placeholder="Password" class="form-control" id="pass">
+            Password: <input type="password" name="pass" placeholder="Password" class="form-control" id="pass">
 
             <input type="submit">
 

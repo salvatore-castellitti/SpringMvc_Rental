@@ -6,11 +6,12 @@
 
 <hr>
 
-<a href="${pageContext.request.contextPath}/">Back to the home page</a>
-<br><br>
+<div class="p-2">
+    <form action="${pageContext.request.contextPath}/logout">
+        <input type="submit" value="Logout" class="btn btn-secondary">
+    </form>
+</div>
 <!--Add Log out-->
-<form:form action="${pageContext.request.contextPath}/logout" method="POST">
-    <input type="submit" value="Logout">
-</form:form>
+
 
 

@@ -18,14 +18,9 @@
   </head>
   <body>
   <div class="d-flex">
-    <div class="p-2">
+    <div class="mr-auto p-2">
       <form action="${pageContext.request.contextPath}/vehicle">
         <input type="submit" class="btn btn-secondary mr-1" value="Car Park">
-      </form>
-    </div>
-    <div class="p-2">
-      <form action="${pageContext.request.contextPath}/user/profile" >
-        <input type="submit" value="Profile" class="btn btn-secondary mr-1">
       </form>
     </div>
     <div class="p-2">
@@ -33,9 +28,16 @@
         <input type="submit" value="Reservation" class="btn btn-secondary mr-1">
       </form>
     </div>
-    <div class="ml-auto p-2">
-      <form action="${pageContext.request.contextPath}/logout">
-        <input type="submit" value="Logout" class="btn btn-secondary">
+    <security:authorize access="hasRole('CUSTOMER')">
+      <div class="p-2">
+        <form action="${pageContext.request.contextPath}/user/profile" >
+          <input type="submit" value="Profile" class="btn btn-secondary mr-1">
+        </form>
+      </div>
+    </security:authorize>
+    <div class="p-2">
+      <form action="${pageContext.request.contextPath}/">
+        <input type="submit" value="Home Page" class="btn btn-secondary">
       </form>
     </div>
   </div>

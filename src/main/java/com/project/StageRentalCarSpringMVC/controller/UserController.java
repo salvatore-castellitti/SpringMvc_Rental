@@ -77,7 +77,6 @@ public class UserController {
     public String getProfile(Principal principal, Model model){
 
         User user = userService.getByUsername(principal.getName());
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
         model.addAttribute("userAction",user);
         return "user-form";
     }

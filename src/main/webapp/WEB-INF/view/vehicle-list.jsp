@@ -34,6 +34,7 @@
                         <td>${vehicle.registrationYear}</td>
                         <security:authorize access="hasRole('ADMIN')">
                         <td>
+                            <div style="display: flex;">
                             <form action="${pageContext.request.contextPath}/vehicle/update">
                                 <input type="submit" class="btn btn-secondary" value="update"/>
                                 <input type="hidden" name="idVehicle" value="${vehicle.id}">
@@ -42,7 +43,7 @@
                                 <input type="submit" class="btn btn-secondary" value="delete" onclick="return confirm('Are you sure you want delete this user?')"/>
                                 <input type="hidden" name="idVehicle" value="${vehicle.id}">
                             </form>
-
+                            </div>
                         </td>
                         </security:authorize>
                     </tr>
