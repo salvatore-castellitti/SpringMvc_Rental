@@ -1,6 +1,13 @@
 package com.project.StageRentalCarSpringMVC.model;
 
+import org.hibernate.validator.constraints.UniqueElements;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
@@ -21,16 +28,21 @@ public class User implements Serializable {
     private String surname;
 
     @Column(name = "username")
+    @NotBlank(message = "Username must be not null")
     private String username;
     //unique
 
     @Column(name = "password")
     private String password;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "birthday")
+    @Past(message = "is impossible you are born in the future")
     private Date birthday;
 
     @Column(name = "taxCode")
+    @Size(min = 9, max = 10, message
+            = "Tax Code must be between 9 and 10 characters")
     private String taxCode;
 
     @Column(name = "role")

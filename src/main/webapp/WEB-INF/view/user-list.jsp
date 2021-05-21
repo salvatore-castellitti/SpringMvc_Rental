@@ -11,6 +11,7 @@
                 <tr>
                     <th scope="col">Name</th>
                     <th scope="col">Surname</th>
+                    <th scope="col">Birthday</th>
                     <th scope="col">Username</th>
                     <th scope="col">Tax Code</th>
                     <th scope="col">Action</th>
@@ -21,6 +22,7 @@
                     <tr>
                         <td>${user.name}</td>
                         <td>${user.surname}</td>
+                        <td><fmt:formatDate value="${user.birthday}" type="date" pattern="dd-MMM-yyyy"/></td>
                         <td>${user.username}</td>
                         <td>${user.taxCode}</td>
                         <td>

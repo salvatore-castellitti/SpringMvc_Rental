@@ -21,10 +21,15 @@
 
             Surname: <form:input id="surname" path="surname" type="text" placeholder="Surname" class="form-control"/> <br>
 
-            Username: <form:input id="username" path="username" type="text" placeholder="Username" class="form-control"/> <br>
+            Birthday: <form:input path="birthday" id="birthday" type="date" placeholder="Birthday" class="form-controll"/>
+            <form:errors path="birthday" /> <br>
 
-            Tax Code: <form:input id="taxCode" path="taxCode" type="text" placeholder="Tax Code" class="form-control"/> <br>
+            Username: <form:input id="username" path="username" type="text" placeholder="Username" class="form-control"/>
+            <form:errors path="username" /> <br>
 
+            Tax Code: <form:input id="taxCode" path="taxCode" type="text" placeholder="Tax Code" class="form-control"/>
+            <form:errors path="taxCode" />
+            <br>
             Password: <input type="password" name="pass" placeholder="Password" class="form-control" id="pass">
 
             <input type="submit">
